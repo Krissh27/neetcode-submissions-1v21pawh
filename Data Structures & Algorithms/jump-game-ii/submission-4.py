@@ -1,0 +1,18 @@
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        dp={}
+        n=len(nums)
+        def dfs(i):
+            res=float('inf')
+            if i>=n-1:
+                return 0
+            if i in dp:
+                return dp[i]
+            for ii in range(1,min(nums[i]+1,n-i)):
+                res= min(res,1+dfs(i+ii))
+            dp[i]=res
+            return res
+        return dfs(0)
+            
+
+        
